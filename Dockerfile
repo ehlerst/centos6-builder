@@ -1,6 +1,6 @@
 FROM centos:6
 
-MAINTAINER Tim Ehlers <ehlerst@yahoo.com>
+MAINTAINER Tim Ehlers <ehlerst@gmail.com>
 
 ENV RUBY_VERSION 2.4.0
 ENV PATH $PATH:/usr/local/rvm/bin
@@ -14,7 +14,7 @@ RUN yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noar
 
 RUN yum groupinstall 'Development Tools' -y
 
-RUN yum install openssl-devel zlib-devel python  -y
+RUN yum install openssl-devel zlib-devel python wget -y
 
 RUN mkdir -p ~/rpmbuild/{BUILD,BUILDROOT,RPMS,SOURCES,SPECS,SRPMS}
 
@@ -32,4 +32,6 @@ RUN /bin/bash -lc "rvm requirements"
 RUN /bin/bash -lc  "rvm install ${RUBY_VERSION} && rvm use ${RUBY_VERSION} --default"
 RUN /bin/bash -lc  "rvm install ${RUBY_VERSION}-dev"
 
-RUN gem install rubocop pleaserun fpm
+RUN rvm rubygems current
+
+RUN /bin/bash -lc "gem install rubocop pleaserun fpm"
