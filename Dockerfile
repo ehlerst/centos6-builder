@@ -10,7 +10,7 @@ USER root
 
 RUN yum install git -y
 
-RUN yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm -y
+RUN yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm -y
 
 RUN yum groupinstall 'Development Tools' -y
 
